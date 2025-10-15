@@ -1,9 +1,4 @@
-import ReviewCard from '../../components/ReviewCard';
-import { tools } from '../../data/tools';
-
 export default function SEOToolsPage() {
-  const seoTools = tools['seo-tools'];
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-12">
@@ -15,14 +10,8 @@ export default function SEOToolsPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {seoTools.map((tool) => (
-          <ReviewCard 
-            key={tool.id} 
-            tool={tool} 
-            category="seo-tools" 
-          />
-        ))}
+      <div className="text-center py-12">
+        <p className="text-gray-500">SEO tools coming soon!</p>
       </div>
     </div>
   );

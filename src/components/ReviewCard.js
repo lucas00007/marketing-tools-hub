@@ -2,6 +2,10 @@ import Link from 'next/link'
 import StarRating from './StarRating'
 
 export default function ReviewCard({ review }) {
+  if (!review || !review.name) {
+    return null
+  }
+
   return (
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 group">
       {/* Image/Logo Area */}
@@ -15,8 +19,8 @@ export default function ReviewCard({ review }) {
       <div className="p-6">
         {/* Rating */}
         <div className="flex items-center gap-2 mb-3">
-          <StarRating rating={review.rating} />
-          <span className="text-sm font-semibold text-gray-700">{review.rating}/5</span>
+          <StarRating rating={review.rating || 0} />
+          <span className="text-sm font-semibold text-gray-700">{review.rating || 0}/5</span>
         </div>
 
         {/* Title */}
@@ -26,14 +30,14 @@ export default function ReviewCard({ review }) {
 
         {/* Description */}
         <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-          {review.description}
+          {review.description || 'No description available'}
         </p>
 
         {/* Price & CTA */}
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <span className="text-sm font-bold text-gray-900">{review.price}</span>
+          <span className="text-sm font-bold text-gray-900">{review.price || 'Price not available'}</span>
           <Link 
-            href={review.href}
+            href={review.href || '#'}
             className="text-blue-600 font-semibold hover:text-blue-700 transition inline-flex items-center gap-1"
           >
             Read Review
